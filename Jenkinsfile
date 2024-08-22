@@ -23,14 +23,10 @@ environment {
             }
         }
         stage('SonarQube analysis') {
-    environment {
-      scannerHome = tool 'valaxy-sonar-scanner'
+    withSonarQubeEnv(installationName: 'valaxy-sonarqube-server') { // You can override the credential to be used, If you have configured more than one global server connection, you can specify the corresponding SonarQube installation name configured in Jenkins
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.11.0.3922:sonar'
     }
-    steps{
-    withSonarQubeEnv('valaxy-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
-      sh "${scannerHome}/bin/sonar-scanner"
-    }
-    }
+  }
   }
     }
 }
