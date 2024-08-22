@@ -25,7 +25,7 @@ environment {
         stage('SonarQube analysis') {
             steps {
     withSonarQubeEnv(installationName: 'valaxy-sonarqube-server') { // You can override the credential to be used, If you have configured more than one global server connection, you can specify the corresponding SonarQube installation name configured in Jenkins
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.10.0.2594:sonar'
+      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar'
     }
             }
   }
